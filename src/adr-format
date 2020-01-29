@@ -1,0 +1,21 @@
+#!/bin/bash
+set -eou pipefail
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr format
+##
+## Format all adr in directory for line length of 80
+
+adr_dir=$("$adr_bin_dir/_adr_dir")
+
+if [ -d "$adr_dir" ]
+then
+  for file in $(find "$adr_dir" | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md" | sort);do
+    tmpfile="$(mktemp)"
+    fmt -w 80 "$file" > "$tmpfile"
+    mv "$tmpfile" "$file"
+  done
+else
+    echo "The $adr_dir directory does not exist"
+    exit 1
+fi

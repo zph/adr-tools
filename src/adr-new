@@ -99,17 +99,16 @@ else
     newnum=1
 fi
 
-newid=$(printf "%04d" $newnum)
-slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
-dstfile=$dstdir/$newid-$slug.md
-date=${ADR_DATE:-$(date +%Y-%m-%d)}
+date="${ADR_DATE:-$(date +%Y-%m-%d)}"
+dateid="$(echo "$date" | tr -d '[:punct:]')"
+slug=$(echo -n "$title" | tr -Ccs "[:alnum:]" - | tr "[:upper:]" "[:lower:]" | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
+dstfile=$dstdir/$dateid-$slug.md
 
-mkdir -p $dstdir
-cat $template | sed \
-    -e "s|NUMBER|$newnum|" \
+mkdir -p "$dstdir"
+cat "$template" | sed \
     -e "s|TITLE|$title|" \
     -e "s|DATE|$date|" \
-    -e "s|STATUS|Accepted|" \
+    -e "s|STATUS|Proposed|" \
     > $dstfile
 
 for target in "${superceded[@]}"
