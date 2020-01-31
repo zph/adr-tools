@@ -2,11 +2,11 @@
 set -eou pipefail
 source "$($(dirname $0)/adr-config)"
 
-source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
+source=$("$ADR_BIN_DIR/_adr_file" "${1:?SOURCE}")
 link_type="${2:?LINK TYPE}"
-target=$("$adr_bin_dir/_adr_file" "${3:?TARGET}")
+target=$("$ADR_BIN_DIR/_adr_file" "${3:?TARGET}")
 
-target_title="$("$adr_bin_dir/_adr_title" "$target")"
+target_title="$("$ADR_BIN_DIR/_adr_title" "$target")"
 
 awk -v link_type="$link_type" -v target="$(basename $target)" -v target_title="$target_title" '
 	BEGIN { 

@@ -72,14 +72,14 @@ do
 done
 shift $((OPTIND-1))
 
-dstdir=$("$adr_bin_dir/_adr_dir")
+dstdir=$("$ADR_BIN_DIR/_adr_dir")
 template="$ADR_TEMPLATE"
 if [ -z $template ]
 then
     template="$dstdir/templates/template.md"
     if [ ! -f "$template" ]
     then
-        template="$adr_template_dir/template.md"
+        template="$ADR_TEMPLATE_DIR/template.md"
     fi
 fi
 
@@ -113,9 +113,9 @@ cat "$template" | sed \
 
 for target in "${superseded[@]}"
 do
-	"$adr_bin_dir/_adr_add_link" "$target" "Superseded by" "$dstfile"
-	"$adr_bin_dir/_adr_remove_status" "Accepted" "$target"
-	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supersedes" "$target"
+	"$ADR_BIN_DIR/_adr_add_link" "$target" "Superseded by" "$dstfile"
+	"$ADR_BIN_DIR/_adr_remove_status" "Accepted" "$target"
+	"$ADR_BIN_DIR/_adr_add_link" "$dstfile" "Supersedes" "$target"
 done
 
 for l in "${links[@]}"
@@ -124,8 +124,8 @@ do
 	forward_link="$(echo $l | cut -d : -f 2)"
 	reverse_link="$(echo $l | cut -d : -f 3)"
 	
-	"$adr_bin_dir/_adr_add_link" "$dstfile" "$forward_link" "$target"
-	"$adr_bin_dir/_adr_add_link" "$target" "$reverse_link" "$dstfile"
+	"$ADR_BIN_DIR/_adr_add_link" "$dstfile" "$forward_link" "$target"
+	"$ADR_BIN_DIR/_adr_add_link" "$target" "$reverse_link" "$dstfile"
 done
 
 ${VISUAL:-${EDITOR:-true}} $dstfile

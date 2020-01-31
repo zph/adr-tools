@@ -2,9 +2,9 @@
 set -eou pipefail
 source "$($(dirname $0)/adr-config)"
 
-for f in $(cd "$adr_bin_dir" && find . -name 'adr-*')
+for f in $(cd "$ADR_BIN_DIR" && find . -name 'adr-*')
 do
-	if [ -x "$adr_bin_dir/$f" ]
+	if [ -x "$ADR_BIN_DIR/$f" ]
 	then
 		echo "$f" | cut -c 7-
 	fi

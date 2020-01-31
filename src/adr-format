@@ -6,7 +6,7 @@ source "$($(dirname $0)/adr-config)"
 ##
 ## Format all adr in directory for line length of 80
 
-adr_dir=$("$adr_bin_dir/_adr_dir")
+adr_dir=$("$ADR_BIN_DIR/_adr_dir")
 
 if [ -d "$adr_dir" ]
 then

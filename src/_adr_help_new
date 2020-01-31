@@ -15,7 +15,7 @@ scripts.
 If the ADR directory contains a file `templates/template.md`, this is used as
 the template for the new ADR.  Otherwise the following file is used:
 
-  ${adr_template_dir}/template.md
+  ${ADR_TEMPLATE_DIR}/template.md
 
 This template follows the style described by Michael Nygard in this article.
 

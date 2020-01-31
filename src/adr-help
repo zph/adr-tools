@@ -13,4 +13,4 @@ source "$($(dirname $0)/adr-config)"
 
 pager="${ADR_PAGER:-${PAGER:-more}}"
 
-("$adr_bin_dir/_adr_help" "$@") | $pager
+("$ADR_BIN_DIR/_adr_help" "$@") | $pager

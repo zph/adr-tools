@@ -3,5 +3,5 @@
 
 basedir=$(cd -L "$(dirname "$0")" >/dev/null 2>&1 && pwd -L)
 
-export adr_bin_dir="${basedir}"
-export adr_template_dir="${basedir}"
+export ADR_BIN_DIR="${basedir}"
+export ADR_TEMPLATE_DIR="${basedir}"

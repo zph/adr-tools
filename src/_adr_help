@@ -6,19 +6,19 @@ cmds=("$@")
 
 if (( ${#@} == 1 ))
 then
-	cmdexe="$adr_bin_dir/adr-$1"
+	cmdexe="$ADR_BIN_DIR/adr-$1"
 elif (( ${#@} > 1 ))
 then
-	cmdexe="$adr_bin_dir/_adr_$(IFS=_; echo "${cmds[*]}")"
+	cmdexe="$ADR_BIN_DIR/_adr_$(IFS=_; echo "${cmds[*]}")"
 fi
 
-helpexe="$adr_bin_dir/_adr_help_$(IFS=_; echo "${cmds[*]}")"
+helpexe="$ADR_BIN_DIR/_adr_help_$(IFS=_; echo "${cmds[*]}")"
 
 if [ -z "$cmds" -o \( ! -x "$cmdexe" -a ! -x "$helpexe" \) ]
 then
     echo "usage: adr help COMMAND [ARG] ..."
     echo "COMMAND is one of: "
-    $adr_bin_dir/_adr_commands | sed 's/^/  /'
+    $ADR_BIN_DIR/_adr_commands | sed 's/^/  /'
     echo "Run 'adr help COMMAND' for help on a specific command."
 else
 	if [ -x "$helpexe" ]
@@ -29,7 +29,7 @@ else
 	fi
 	
 	# Assumes only two levels of command / subcommand.
-	subcmds=( $(compgen -G "$adr_bin_dir/_adr_$1_"'*') )
+	subcmds=( $(compgen -G "$ADR_BIN_DIR/_adr_$1_"'*') )
 	
 	if (( ${#subcmds} > 0 ))
 	then

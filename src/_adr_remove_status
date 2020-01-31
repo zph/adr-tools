@@ -3,7 +3,7 @@ set -eou pipefail
 source "$($(dirname $0)/adr-config)"
 
 current_status=${1:?FROM}
-file=$("$adr_bin_dir/_adr_file" "${2:?FILE}")
+file=$("$ADR_BIN_DIR/_adr_file" "${2:?FILE}")
 
 awk -v current_status="$current_status" '
 	BEGIN { 
