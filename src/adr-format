@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eou pipefail
-eval "$($(dirname $0)/adr-config)"
+source "$($(dirname $0)/adr-config)"
 
 ## usage: adr format
 ##
