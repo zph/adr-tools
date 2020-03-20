@@ -12,7 +12,7 @@ if [ -d "$adr_dir" ]
 then
   for file in $(find "$adr_dir" | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md" | sort);do
     tmpfile="$(mktemp)"
-    fmt -w 80 "$file" > "$tmpfile"
+    fold -sw 80 "$file" > "$tmpfile"
     mv "$tmpfile" "$file"
   done
 else
